@@ -1,0 +1,34 @@
+{% extends 'admin/master.html' %}
+
+
+{% block head_css %}
+    {{ super() }}
+    <link href="{{ url_for('static',filename='styles/students_list.css') }}" rel="stylesheet">
+{% endblock %}
+
+
+{% block body %}
+    <br/>
+        <a href="{{ url_for('logout') }}" style="font-size:30px">Logout</a>
+    <br/><br/>
+
+    <table class="studentTable">
+        <thead>
+        <tr>
+        <th>User Name</th>
+        <th>User Email</th>
+        <th>User IP Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for user in users_list %}
+        <tr>
+        <td>{{ user[0] }}</td>
+        <td>{{ user[1] }}</td>
+        <td>{{ user[2] }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
